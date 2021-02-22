@@ -41,6 +41,7 @@ const getProducts = async (req, res, next) => {
   try {
     await client.connect();
     const db = client.db();
+    /* find : returns a cursor to the list of docs and need to go through the array */
     products = await db.collection('products').find().toArray();
   } catch (error) {
     return res.json({ message: 'Could not retrieve products.' });
